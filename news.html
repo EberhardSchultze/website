@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuigkeiten - Eberhard Schultze</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header h1 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+        header nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        header nav ul li {
+            margin-left: 20px;
+        }
+        header nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1em;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .round {
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        h2.accent-green {
+            color: #2c7d59;
+            text-align: center;
+        }
+        h3.accent-green {
+            color: #2c7d59;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .boxes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .box h3 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        ul.custom-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul.custom-list li {
+            background: url('auszeichnung.png') no-repeat left center;
+            background-size: 20px;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        .flags-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .flag {
+            width: 75px;
+            height: auto;
+        }
+        .footer-box {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .admin-section, .admin-form, .delete-button {
+            display: none;
+        }
+        .login-icon {
+            cursor: pointer;
+            width: 30px; /* Größe des Icons verringern */
+            height: 30px;
+            position: absolute; /* Positionieren */
+            top: 10px; /* Abstand vom oberen Rand */
+            right: 10px; /* Abstand vom rechten Rand */
+        }
+        .news-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .news-item h4 {
+            margin: 0 0 10px 0;
+        }
+        .news-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .bg-green {
+            background-color: #2c7d59;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .bg-green:hover {
+            background-color: #245947;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-nav">
+            <h1>Eberhard Schultze</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über mich</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="news.html">Neuigkeiten</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2 class="accent-green">Neuigkeiten</h2>
+        <img src="login.png" alt="Login" class="login-icon round" onclick="toggleLoginSection()">
+        <div id="login-section" class="admin-section">
+            <h3>Login</h3>
+            <input type="password" id="password" placeholder="Passwort eingeben">
+            <button onclick="login()" class="bg-green">Login</button>
+        </div>
+        <div id="admin-form" class="admin-form">
+            <h3>Neuigkeit hinzufügen</h3>
+            <input type="text" id="news-title" placeholder="Titel"><br><br>
+            <textarea id="news-content" placeholder="Inhalt"></textarea><br><br>
+            <input type="file" id="news-image"><br><br>
+            <select id="news-category">
+                <option value="Vorlesungen">Vorlesungen</option>
+                <!-- Dynamisch erstellte Kategorien hier hinzufügen -->
+            </select><br><br>
+            <input type="text" id="new-category" placeholder="Neue Kategorie"><br><br>
+            <button onclick="addNews()" class="bg-green">Hinzufügen</button>
+            <button onclick="addCategory()" class="bg-green">Kategorie hinzufügen</button>
+        </div>
+        <div class="news-section">
+            <h3 class="accent-green">Alle Neuigkeiten</h3>
+            <form id="filter-form">
+                <select id="category-filter" onchange="filterNews()">
+                    <option value="">Alle Kategorien</option>
+                    <option value="Vorlesungen">Vorlesungen</option>
+                    <!-- Dynamisch erstellte Kategorien hier hinzufügen -->
+                </select>
+            </form>
+            <div id="news-list">
+                <!-- Nachrichten werden hier dynamisch hinzugefügt -->
+            </div>
+        </div>
+    </main>
+    <script>
+        let loggedIn = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsFromStorage();
+            loadCategoriesFromStorage();
+        });
+
+        function toggleLoginSection() {
+            const loginSection = document.getElementById('login-section');
+            loginSection.style.display = (loginSection.style.display === 'none' || loginSection.style.display === '') ? 'block' : 'none';
+        }
+
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === 'tilimilitram333') {
+                loggedIn = true;
+                document.getElementById('admin-form').style.display = 'block';
+                document.querySelectorAll('.delete-button').forEach(button => {
+                    button.style.display = 'block';
+                });
+                document.getElementById('login-section').style.display = 'none';
+            } else {
+                alert('Falsches Passwort');
+            }
+        }
+
+        function addNews() {
+            if (!loggedIn) {
+                alert('Bitte loggen Sie sich ein, um eine Neuigkeit hinzuzufügen.');
+                return;
+            }
+
+            const title = document.getElementById('news-title').value;
+            const content = document.getElementById('news-content').value;
+            const category = document.getElementById('news-category').value;
+            const imageInput = document.getElementById('news-image');
+
+            const newsItem = {
+                id: Date.now(),
+                title: title,
+                date: new Date().toLocaleDateString(),
+                content: content,
+                category: category,
+                image: ''
+            };
+
+            if (imageInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    newsItem.image = event.target.result;
+                    saveNewsToStorage(newsItem);
+                    displayNews(newsItem);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                saveNewsToStorage(newsItem);
+                displayNews(newsItem);
+            }
+
+            // Formular leeren
+            document.getElementById('news-title').value = '';
+            document.getElementById('news-content').value = '';
+            document.getElementById('news-image').value = '';
+            document.getElementById('news-category').value = 'Vorlesungen';
+        }
+
+        function addCategory() {
+            const newCategory = document.getElementById('new-category').value;
+            if (newCategory && !categoryExists(newCategory)) {
+                saveCategoryToStorage(newCategory);
+                appendCategoryOption(newCategory);
+                document.getElementById('new-category').value = '';
+            } else {
+                alert('Kategorie existiert bereits oder ist ungültig.');
+            }
+        }
+
+        function categoryExists(category) {
+            const categorySelect = document.getElementById('news-category');
+            return Array.from(categorySelect.options).some(option => option.value === category);
+        }
+
+        function appendCategoryOption(category) {
+            const categorySelect = document.getElementById('news-category');
+            const filterSelect = document.getElementById('category-filter');
+            const option = new Option(category, category);
+            categorySelect.add(option);
+            filterSelect.add(new Option(category, category));
+        }
+
+        function displayNews(newsItem) {
+            const newsList = document.getElementById('news-list');
+            const newsItemElement = document.createElement('div');
+            newsItemElement.className = 'news-item';
+            newsItemElement.setAttribute('data-id', newsItem.id);
+            newsItemElement.setAttribute('data-category', newsItem.category);
+
+            const newsTitle = document.createElement('h4');
+            newsTitle.innerText = newsItem.title;
+
+            const newsDate = document.createElement('p');
+            newsDate.className = 'news-date';
+            newsDate.innerText = newsItem.date;
+
+            const newsContent = document.createElement('p');
+            newsContent.innerText = newsItem.content;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-button bg-green';
+            deleteButton.innerText = 'Löschen';
+            deleteButton.onclick = function() {
+                deleteNews(deleteButton);
+            };
+            deleteButton.style.display = loggedIn ? 'block' : 'none';
+
+            newsItemElement.appendChild(newsTitle);
+            newsItemElement.appendChild(newsDate);
+            newsItemElement.appendChild(newsContent);
+            if (newsItem.image) {
+                const newsImage = document.createElement('img');
+                newsImage.className = 'news-image';
+                newsImage.src = newsItem.image;
+                newsItemElement.appendChild(newsImage);
+            }
+            newsItemElement.appendChild(deleteButton);
+
+            newsList.appendChild(newsItemElement);
+        }
+
+        function filterNews() {
+            const filter = document.getElementById('category-filter').value;
+            const newsItems = document.querySelectorAll('.news-item');
+            newsItems.forEach(item => {
+                if (filter === "" || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function saveNewsToStorage(newsItem) {
+            let newsItems = JSON.parse(localStorage.getItem('newsItems')) || [];
+            newsItems.push(newsItem);
+            localStorage.setItem('newsItems', JSON.stringify(newsItems));
+        }
+
+        function loadNewsFromStorage() {
+            let newsItems = JSON.parse(localStorage.getItem('newsItems')) || [];
+            newsItems.forEach(newsItem => {
+                displayNews(newsItem);
+            });
+        }
+
+        function saveCategoryToStorage(category) {
+            let categories = JSON.parse(localStorage.getItem('categories')) || [];
+            categories.push(category);
+            localStorage.setItem('categories', JSON.stringify(categories));
+        }
+
+        function loadCategoriesFromStorage() {
+            let categories = JSON.parse(localStorage.getItem('categories')) || [];
+            categories.forEach(category => {
+                appendCategoryOption(category);
+            });
+        }
+
+        function removeFromStorage(newsId) {
+            let newsItems = JSON.parse(localStorage.getItem('newsItems')) || [];
+            newsItems = newsItems.filter(item => item.id !== Number(newsId));
+            localStorage.setItem('newsItems', JSON.stringify(newsItems));
+        }
+
+        function deleteNews(button) {
+            if (loggedIn) {
+                const newsItemElement = button.parentElement;
+                const newsId = newsItemElement.getAttribute('data-id');
+                newsItemElement.remove();
+                removeFromStorage(newsId);
+            } else {
+                alert('Bitte loggen Sie sich ein, um Nachrichten zu löschen.');
+            }
+        }
+    </script>
+</body>
+</html>

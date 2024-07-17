@@ -1,0 +1,106 @@
+body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+header {
+    background: #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header h1 {
+    font-size: 1.8em;
+    margin: 0;
+}
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+header nav ul li {
+    margin-left: 20px;
+}
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+}
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.round {
+    border-radius: 50%;
+    display: block;
+    margin: 20px auto;
+}
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+p {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+.boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 1 1 calc(33% - 40px);
+    max-width: calc(33% - 40px);
+    box-sizing: border-box;
+}
+.box h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+ul.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+ul.custom-list li {
+    background: url('auszeichnung.png') no-repeat left center;
+    background-size: 20px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
+.flags-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.flag {
+    width: 75px;
+    height: auto;
+}
+.footer-box {
+    text-align: center;
+    margin-top: 20px;
+}
+

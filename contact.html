@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt zu Eberhard Schultze</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Danfo&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for the contact page */
+        body {
+            background-color: #f9f9f9;
+        }
+        .contact-form {
+            background-color: #f3f8f5; /* Light green background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333; /* Dark text color */
+        }
+        .contact-form input[type="text"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc; /* Lighter border */
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .contact-form textarea {
+            resize: vertical; /* Allow vertical resizing of textarea */
+        }
+        .contact-form button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #4caf50; /* Green button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+    <script>
+        function sendEmail(event) {
+            event.preventDefault();  // Prevent form submission
+            var name = document.getElementById("name").value;
+            var message = document.getElementById("message").value;
+            var recipientEmail = "eberhard.schultze@web.de";
+            var subject = encodeURIComponent("Kontakt von " + name);
+            var body = encodeURIComponent("Name: " + name +"\n\nNachricht:\n" + message);
+
+            var mailtoLink = "mailto:" + recipientEmail + "?subject=" + subject + "&body=" + body;
+            window.location.href = mailtoLink;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-nav">
+            <h1>Eberhard Schultze</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über mich</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="news.html">Neuigkeiten</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Kontakt zu Eberhard Schultze</h1>
+        <p>Wenn Sie Fragen haben oder meine Beratungsdienste in Anspruch nehmen möchten, können Sie mich gerne kontaktieren.</p>
+
+        <div class="boxes-container">
+            <div class="box">
+                <h3>Kontakt</h3>
+                <p>Eberhard Schultze<br>
+                Im Winkel 7<br>
+                31185 Hoheneggelsen<br>
+                Tel. +49(0)5129/96123<br>
+                Email: <a href="mailto:eberhard.schultze@web.de">eberhard.schultze@web.de</a></p>
+            </div>
+
+            <div class="box">
+                <h3>Kontakt</h3>
+                <form class="contact-form" onsubmit="sendEmail(event);">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="message">Nachricht:</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                    <button type="submit">Senden</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
